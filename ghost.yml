@@ -27,6 +27,7 @@ spec:
   tls:
   - hosts:
     - www.technicallyinteresting.com
+    - technicallyinteresting.com
     secretName: letsencrypt-prod
   rules:
   - host: www.technicallyinteresting.com
