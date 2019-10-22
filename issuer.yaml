@@ -2,7 +2,6 @@ apiVersion: certmanager.k8s.io/v1alpha1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod
-  namespace: default
 spec:
   acme:
     # The ACME server URL
@@ -11,7 +10,7 @@ spec:
     email: keith@hubner.co.uk
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
-      name: www.technicallyinteresting.com-cert
+      name: letsencrypt-prod
     # Enable the HTTP-01 challenge provider
     solvers:
     - http01:
