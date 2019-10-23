@@ -1,10 +1,11 @@
+#Create the PV
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mysql-pv
+  name: ghost-pv
   namespace: apps
   labels:
-    name: mysql-data
+    name: ghost-data
     type: longhorn
 spec:
   capacity:
@@ -19,4 +20,20 @@ spec:
     volumeAttributes:
       numberOfReplicates: '2'
       staleReplicaTimeout: '20'
-    volumeHandle: mysql-data
+    volumeHandle: ghost-data
+---
+#Create the PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ghost-pv-claim
+  labels:
+    type: longhorn
+    app: ghost
+spec:
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
