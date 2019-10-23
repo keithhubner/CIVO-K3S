@@ -21,12 +21,14 @@ metadata:
   annotations:
     certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: "traefik"
+    ingress.kubernetes.io/ssl-redirect: "true"
   labels:
     app: ghost
 spec:
   tls:
   - hosts:
     - www.technicallyinteresting.com
+    - technicallyinteresting.com
     secretName: letsencrypt-prod
   rules:
   - host: www.technicallyinteresting.com
