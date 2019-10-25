@@ -1,27 +1,27 @@
-#Create the PV
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: ghost-pv
-  namespace: apps
-  labels:
-    name: ghost-data
-    type: longhorn
-spec:
-  capacity:
-    storage: 5G
-  volumeMode: Filesystem
-  storageClassName: longhorn
-  accessModes:
-    - ReadWriteOnce
-  csi:
-    driver: io.rancher.longhorn
-    fsType: ext4
-    volumeAttributes:
-      numberOfReplicates: '2'
-      staleReplicaTimeout: '20'
-    volumeHandle: ghost-data
----
+##Create the PV
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: ghost-pv
+#  namespace: apps
+#  labels:
+#    name: ghost-data
+#    type: longhorn
+#spec:
+#  capacity:
+#    storage: 5G
+#  volumeMode: Filesystem
+#  storageClassName: longhorn
+#  accessModes:
+#    - ReadWriteOnce
+#  csi:
+#    driver: io.rancher.longhorn
+#    fsType: ext4
+#    volumeAttributes:
+#      numberOfReplicates: '2'
+#      staleReplicaTimeout: '20'
+#    volumeHandle: ghost-data
+#---
 #Create the PVC
 apiVersion: v1
 kind: PersistentVolumeClaim
