@@ -18,27 +18,27 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: ghost-ingress
-  annotations:
-    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/ingress.class: "traefik"
-    ingress.kubernetes.io/ssl-redirect: "true"
+  #annotations:
+  #  certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+  #  kubernetes.io/ingress.class: "traefik"
+  #  ingress.kubernetes.io/ssl-redirect: "true"
   labels:
     app: ghost
 spec:
-  tls:
-  - hosts:
-    - www.technicallyinteresting.com
-    - technicallyinteresting.com
-    secretName: letsencrypt-prod
+  #tls:
+  #- hosts:
+  #  - www.yourbloghere.com
+  #  - yourbloghere.com
+  #  secretName: letsencrypt-prod
   rules:
-  - host: www.technicallyinteresting.com
+  - host: www.yourbloghere.com
     http:
       paths:
       - path: /
         backend:
           serviceName: ghost-svc
           servicePort: 2368
-  - host: technicallyinteresting.com
+  - host: yourbloghere.com
     http:
       paths:
       - path: /
@@ -73,7 +73,7 @@ spec:
         - containerPort: 2368
         env:
         - name: url
-          value: https://www.technicallyinteresting.com
+          value: https://www.yourbloghere.com
         - name: database__client
           value: mysql
         - name: database__connection__host
